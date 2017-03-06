@@ -1,0 +1,35 @@
+server
+    {
+        listen 80;
+        #listen [::]:80 default_server ipv6only=on;
+        server_name h1z1.ss12.win;
+        index index;
+        root  /www/cgi;
+        #ssl on;
+        #ssl_certificate /etc/letsencrypt/live/xiamen.ga/fullchain.pem;
+        #ssl_certificate_key /etc/letsencrypt/live/xiamen.ga/privkey.pem;
+        #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        error_page   404   https://h1z1.ga$request_uri;
+        location /
+        {
+            try_files $uri.php =404;
+            fastcgi_pass  unix:/tmp/php-cgi.sock;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+        }
+        location /nginx_status
+        {
+            stub_status on;
+            access_log   off;
+        }
+        location ~ /.well-known{
+        allow all;
+        }
+
+        location ~ /\.
+        {
+            deny all;
+        }
+
+        access_log  /home/wwwlogs/access.log;
+    }

@@ -1,0 +1,4 @@
+helloddd
+<?php
+
+phpinfo();
