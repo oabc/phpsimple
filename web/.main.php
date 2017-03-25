@@ -8,4 +8,7 @@ class Main{
     public function __destruct(){
         req('/web/.footer');
     }
+    public function js(){
+        req('/web/.js');
+    }
 }

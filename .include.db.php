@@ -17,7 +17,6 @@ req('/lib/Fun');
 //{
 //    header('Location:'.WWWROOT.'web/');
 //}
-/* include db
 req('/db/.config');
 req('/db/.db');
 global $app;
@@ -26,4 +25,3 @@ if(!$app['db'])
     global $db;
     $db=newdb(DB_HOST,DB_USER,DB_PWD,DB_DBNAME);
 }
-*/
