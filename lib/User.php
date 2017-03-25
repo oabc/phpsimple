@@ -1,5 +1,4 @@
 <?php
-namespace Base;
 class User {
     function __construct(){
         if(strlen($_POST)>200){
