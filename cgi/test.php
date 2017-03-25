@@ -2,7 +2,7 @@
 include '../web/.main.php';
 
 
-$user=User::isLogin();
+$user=Comm/User::isLogin();
 if($user)
 {
     echo("<h1>已经登陆了$user</h1>");
