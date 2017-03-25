@@ -1,4 +1,12 @@
 <?php
+function getpubkey(){
+return "-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQClbllluZE5ncfwVH6oKRXnU8hl
+nRYD2a9LLYNfa6v5obKE9XZy/OQKhzguruSjQYVU/hZjQYc5Ucm7fKxHAqUfGqxQ
+7YRhAQ4nyD1NaTM8Y0LEwBuGC82FL49KRpgGKzPHcUPJA6AQNA4YAgLp7F3Me8b/
+iN5b0e56z7btECDyaQIDAQAB
+-----END PUBLIC KEY-----";
+}
 function getkey(){
 return "-----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAKVuWWW5kTmdx/BU
@@ -17,8 +25,8 @@ YQyDyRoW0XyA3iUPG2hmpLYBMwQ0GF3y1lzeQgItCGoZll1iBc5i4OXHHxH1ffxB
 o0DF9veB8YP6yw==
 -----END PRIVATE KEY-----";
 }
-	function encrypt($data){
-		$key=getkey();
+	function encrypt($data,$key=false){
+		$key=$key?getkey():getpubkey();
 		$isPrivate = strlen($key)>500;
         $keyProvider = $isPrivate?openssl_pkey_get_private($key):openssl_pkey_get_public($key);
 		if($isPrivate){
@@ -30,8 +38,8 @@ o0DF9veB8YP6yw==
 
 		return $r?$data = base64_encode($encrypted):null;
 	}    
-	function decrypt($data){
-		$key=getkey();
+	function decrypt($data,$key=false){
+		$key=$key?getpubkey():getkey();
 		$isPrivate = strlen($key)>500;
         $keyProvider = $isPrivate?openssl_pkey_get_private($key):openssl_pkey_get_public($key);
 		$data = base64_decode($data);
