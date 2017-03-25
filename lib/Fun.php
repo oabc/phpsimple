@@ -27,3 +27,7 @@ function cget($k)
     else
         return '';
 }
+function useRsa()
+{
+    req('/lib/rsa');
+}
