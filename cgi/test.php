@@ -15,7 +15,7 @@ $html=new Main(1);
 $a=post('a');
 if($a)
 {
-    saveUser($a);echo("<h1>保存用户$a</h1>");
+    User::saveUser($a);echo("<h1>保存用户$a</h1>");
 }
 
 ?>
