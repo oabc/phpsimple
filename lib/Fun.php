@@ -20,6 +20,10 @@ function cset($k,$v,$t=false)
     else
         setcookie($k,$v);
 }
+function cclear($k)
+{
+    setcookie($k,'',time()-3600);
+}
 function cget($k)
 {
     if(isset($_COOKIE[$k]))
