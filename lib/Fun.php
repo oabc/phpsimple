@@ -16,13 +16,13 @@ function post($k)
 function cset($k,$v,$t=false)
 {
     if($t)
-        setcookie($k,$v,time()+$t*24*3600);
+        setcookie($k,$v,time()+$t*24*3600,'/');
     else
-        setcookie($k,$v);
+        setcookie($k,$v,'/');
 }
 function cclear($k)
 {
-    setcookie($k,'',time()-3600);
+    setcookie($k,'',time()-3600,'/');
 }
 function cget($k)
 {
